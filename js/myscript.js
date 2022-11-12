@@ -5,15 +5,18 @@
 
 //array con lista username
 var usernameList = ["john", "bob", "micheal"];
-//variabile per controllo username
+//variabili condizione while
 var userCheck = false;
-//variabile per uscire dal while principale
 var exit = false;
 
 //loop controllo username
 while (userCheck == false){
     // chiede username
     var username = window.prompt("Inserisci il tuo username");
+    //se si clicca annulla esce dal while principale
+    if (username == null){
+        break;
+    }
     // ciclo per controllo username 
     for (let i = 0; i < usernameList.length ; i++){
         //if per controllo username
@@ -28,14 +31,17 @@ while (userCheck == false){
                     let cpuNum = Math.floor((Math.random() * 5) + 1);
                     //vincita
                     if (myNum > cpuNum){
-                        window.alert("Hai vinto tu \nIl tuo dado: "+myNum+"\nIl dato del CPU: "+cpuNum);
+                        window.alert("Hai vinto tu! \nIl tuo dado: "+myNum+"\nIl dato del CPU: "+cpuNum);
                     }
                     //perdita
-                    else {
-                        window.alert("Hai perso tu \nIl tuo dado: "+myNum+"\nIl dato del CPU: "+cpuNum);
+                    if (myNum < cpuNum) {
+                        window.alert("Hai perso tu! \nIl tuo dado: "+myNum+"\nIl dato del CPU: "+cpuNum);
+                    }
+                    if (myNum == cpuNum) {
+                        window.alert("Parità!\nIl tuo dado: "+myNum+"\nIl dato del CPU: "+cpuNum);
                     }
                     //domanda tryagain
-                    if (window.confirm("vuoi rigiocare?") == false) {
+                    if (window.confirm("Vuoi riprovare?") == false) {
                         window.alert("Buona giornata "+username+"!");
                         exit = true;
                         break;
